@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张诗博 | 个人网站</title>
+    <meta name="description" content="张诗博的个人网站 - 软件工程专业，展现技术与荣誉">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-code"><span class="keyword">import</span> { <span class="variable">Future</span> } <span class="keyword">from</span> <span class="string">'software-engineering'</span>;</div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="loader-text">Compiling assets... <span class="blink">_</span></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Interactive Canvas Particles -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Background Animated Blobs with Parallax -->
+    <div id="parallax-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <div class="glass-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo magnetic">ZS<span>B.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home" class="magnetic" data-i18n="nav_home">首页</a></li>
+                <li><a href="#about" class="magnetic" data-i18n="nav_about">关于我</a></li>
+                <li><a href="#skills" class="magnetic" data-i18n="nav_skills">技能项目</a></li>
+                <li><a href="#awards" class="magnetic" data-i18n="nav_awards">荣誉奖项</a></li>
+                <li><a href="#contact" class="magnetic" data-i18n="nav_contact">联系我</a></li>
+                <li class="lang-switcher">
+                    <span class="lang-btn active" data-lang="zh">ZH</span>
+                    <span class="lang-btn" data-lang="en">EN</span>
+                    <span class="lang-btn" data-lang="jp">JP</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section-padding">
+            <div class="hero-content">
+                <p class="greeting reveal" data-i18n="greeting">Hello, World! 我是</p>
+                <h1 class="name reveal delay-1"><span id="typewriter"></span><span class="cursor">|</span></h1>
+                <h2 class="title reveal delay-2" data-i18n="title">软件工程领域探索者</h2>
+                <p class="summary reveal delay-3" data-i18n="hero_summary">
+                    深耕于软件工程领域，热爱编码与挑战。<br>
+                    “五四自强之星”获得者，始终以追求卓越的代码质量为己任。
+                </p>
+                <div class="hero-actions reveal delay-4">
+                    <a href="#contact" class="btn primary-btn magnetic" data-i18n="btn_contact">联系我</a>
+                    <a href="#awards" class="btn secondary-btn magnetic" data-i18n="btn_awards">查看荣誉</a>
+                </div>
+
+                <!-- Floating Code Terminal -->
+                <div class="code-terminal glass reveal delay-4 tilt-card hover-glow">
+                    <div class="glow-blob"></div>
+                    <div class="terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">bash - zsb@dev-env</span>
+                    </div>
+                    <div class="terminal-body card-content" id="terminal-body">
+                        <div id="terminal-history"></div>
+                        <pre><code id="terminal-typewriter"></code></pre>
+                        <div id="terminal-input-line" class="hidden">
+                            <span class="prompt">zsb@portfolio:~$</span>
+                            <input type="text" id="terminal-input" spellcheck="false" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="hero-image reveal delay-3">
+                <div class="image-wrapper tilt-card hover-glow">
+                    <div class="glow-blob" style="width: 500px; height: 500px; background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(0,0,0,0) 70%);"></div>
+                    <div class="placeholder-avatar card-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <h2 class="section-title reveal" data-i18n="section_about">关于我</h2>
+            <div class="about-grid">
+                <div class="about-card glass reveal tilt-card hover-glow code-bg">
+                    <div class="glow-blob"></div>
+                    <div class="card-content">
+                        <div class="icon">📍</div>
+                        <h3 data-i18n="about_info_title">基本信息</h3>
+                        <p data-i18n="about_info_desc">吉林长春人，中共党员</p>
+                    </div>
+                </div>
+                <div class="about-card glass reveal delay-1 tilt-card hover-glow code-bg">
+                    <div class="glow-blob"></div>
+                    <div class="card-content">
+                        <div class="icon">🎓</div>
+                        <h3 data-i18n="about_edu_title">教育背景</h3>
+                        <p data-i18n="about_edu_desc">四川轻化工大学<br>软件工程 本科</p>
+                    </div>
+                </div>
+                <div class="about-card glass reveal delay-2 tilt-card hover-glow code-bg">
+                    <div class="glow-blob"></div>
+                    <div class="card-content">
+                        <div class="icon">📈</div>
+                        <h3 data-i18n="about_grade_title">学业成绩</h3>
+                        <p data-i18n="about_grade_desc">平均学分绩点<br><span class="highlight">专业排名第三</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience section-padding">
+            <h2 class="section-title reveal" data-i18n="section_exp">实践经历</h2>
+            <div class="exp-timeline">
+                <div class="exp-item reveal">
+                    <div class="exp-header">
+                        <span class="exp-date">2023 - 至今</span>
+                        <h3 class="exp-role" data-i18n="exp_role_1">班级学习委员 (优秀学委)</h3>
+                    </div>
+                    <p class="exp-desc" data-i18n="exp_desc_1">负责班级学风建设，协调各科课代表与老师间的沟通，组织考前复习研讨会。荣获“优秀学委”称号。</p>
+                </div>
+                <div class="exp-item reveal delay-1">
+                    <div class="exp-header">
+                        <span class="exp-date">2024 - 2025</span>
+                        <h3 class="exp-role" data-i18n="exp_role_2">计算机科学与工程学院 “五四自强之星”</h3>
+                    </div>
+                    <p class="exp-desc" data-i18n="exp_desc_2">在学院科研与社会实践中表现突出，展示了极强的自律性与专业钻研精神。</p>
+                </div>
+                <div class="exp-item reveal delay-2">
+                    <div class="exp-header">
+                        <span class="exp-date">长期</span>
+                        <h3 class="exp-role" data-i18n="exp_role_3">中共党员 / 优秀志愿者</h3>
+                    </div>
+                    <p class="exp-desc" data-i18n="exp_desc_3">积极参与党组织活动与社区服务。2024年荣获“优秀志愿者”称号，践行全心全意为人民服务的宗旨。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Projects Section -->
+        <section id="skills" class="skills section-padding">
+            <h2 class="section-title reveal" data-i18n="section_skills">技术栈 & 项目经历</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category glass reveal hover-glow code-bg">
+                    <div class="glow-blob"></div>
+                    <div class="card-content">
+                        <h3 data-i18n="skills_distribution">专业技能分布</h3>
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-info"><span>C / C++</span><span>92%</span></div>
+                                <div class="skill-progress-bg"><div class="skill-progress" data-width="92%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span>Java</span><span>85%</span></div>
+                                <div class="skill-progress-bg"><div class="skill-progress" data-width="85%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span>Python</span><span>88%</span></div>
+                                <div class="skill-progress-bg"><div class="skill-progress" data-width="88%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span>HarmonyOS</span><span>90%</span></div>
+                                <div class="skill-progress-bg"><div class="skill-progress" data-width="90%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card glass reveal delay-1 tilt-card hover-glow code-bg">
+                        <div class="glow-blob"></div>
+                        <div class="card-content">
+                            <h4 data-i18n="project_1_title">高并发分布式日志收集系统</h4>
+                            <p class="tech-stack">C++ / Socket / 多线程</p>
+                            <p data-i18n="project_1_desc">基于C++编写的高性能日志收集系统，利用多线程与Epoll模型实现了极高的并发吞吐量。</p>
+                        </div>
+                    </div>
+                    <div class="project-card glass reveal delay-2 tilt-card hover-glow code-bg">
+                        <div class="glow-blob"></div>
+                        <div class="card-content">
+                            <h4 data-i18n="project_2_title">大数据航班数据分析平台</h4>
+                            <p class="tech-stack">Python / Pandas / Echarts</p>
+                            <p data-i18n="project_2_desc">全国大学生数据分析实践赛获奖项目。针对海量航班数据进行清洗与特征提取，构建预测模型。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards" class="awards section-padding">
+            <h2 class="section-title reveal" data-i18n="section_awards">荣誉与认证</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass hover-glow code-bg">
+                        <div class="glow-blob"></div>
+                        <div class="card-content">
+                            <h3 data-i18n="award_cat_1">学科竞赛类</h3>
+                            <ul>
+                                <li data-i18n="award_1_1">2025年 第四届全国大学生数据分析实践赛 三等奖</li>
+                                <li data-i18n="award_1_2">蓝桥杯 C++组 四川省 二等奖</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass hover-glow code-bg">
+                        <div class="glow-blob"></div>
+                        <div class="card-content">
+                            <h3 data-i18n="award_cat_2">荣誉称号类</h3>
+                            <ul>
+                                <li data-i18n="award_2_1">2023-2024年 “三好学生”称号</li>
+                                <li data-i18n="award_2_2">2024-2025年 “社会活动积极分子”称号</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass hover-glow code-bg">
+                        <div class="glow-blob"></div>
+                        <div class="card-content">
+                            <h3 data-i18n="award_cat_3">奖学金及认证</h3>
+                            <ul>
+                                <li data-i18n="award_3_1">优秀学生奖学金</li>
+                                <li data-i18n="award_3_2">HarmonyOS 应用开发者高级认证</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding">
+            <div class="contact-card glass reveal hover-glow code-bg">
+                <div class="glow-blob"></div>
+                <div class="card-content">
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;" data-i18n="section_contact">联系我</h2>
+                    <p class="contact-desc" data-i18n="contact_desc">随时欢迎交流技术与合作，期待与您的探讨。</p>
+                    <div class="contact-methods">
+                        <div class="contact-method magnetic">
+                            <div class="icon">✉️</div>
+                            <div class="details">
+                                <span class="label">Email</span>
+                                <a href="mailto:roaxtracy@gmail.com">roaxtracy@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method magnetic">
+                            <div class="icon">💬</div>
+                            <div class="details">
+                                <span class="label">QQ</span>
+                                <span>3213538450</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 张诗博 (Zhang Shibo). All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="magnetic">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </div>
+
+    <script src="./js/translations.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
