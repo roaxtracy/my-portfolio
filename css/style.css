@@ -204,6 +204,18 @@ body {
     font-weight: bold;
 }
 
+.terminal-keyword {
+    color: var(--code-keyword);
+}
+
+.terminal-string {
+    color: var(--code-string);
+}
+
+.terminal-success {
+    color: #27c93f;
+}
+
 #terminal-input {
     background: transparent;
     border: none;
@@ -514,6 +526,10 @@ h1, h2, h3, h4 {
     margin-bottom: 2rem;
 }
 
+.single-line-title {
+    white-space: nowrap;
+}
+
 .summary {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -540,6 +556,35 @@ h1, h2, h3, h4 {
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.035);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.28), rgba(192,132,252,0.2), transparent 58%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+}
+
+.metric-card span {
+    position: relative;
+    z-index: 1;
+}
+
+.metric-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(56, 189, 248, 0.55);
+    background: rgba(56, 189, 248, 0.08);
+    box-shadow: 0 18px 36px rgba(2, 132, 199, 0.18), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.metric-card:hover::before {
+    opacity: 1;
 }
 
 .metric-value {
@@ -594,8 +639,8 @@ h1, h2, h3, h4 {
 }
 
 .image-wrapper {
-    width: 380px;
-    height: 600px;
+    width: min(440px, 34vw);
+    height: 680px;
     border-radius: 30px;
     padding: 12px;
     background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
@@ -624,8 +669,10 @@ h1, h2, h3, h4 {
 /* About Grid */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 .about-card {
@@ -688,6 +735,16 @@ h1, h2, h3, h4 {
     padding: 0.5rem 0.8rem;
     border-radius: 999px;
     font-size: 0.9rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.course-cloud span:hover,
+.tech-clusters span:hover {
+    transform: translateY(-3px);
+    color: #030712;
+    border-color: rgba(125, 211, 252, 0.85);
+    background: linear-gradient(135deg, #67e8f9, #a78bfa);
+    box-shadow: 0 10px 24px rgba(56, 189, 248, 0.24);
 }
 
 /* Skills */
@@ -1032,8 +1089,8 @@ footer {
     }
 
     .image-wrapper {
-        width: 320px;
-        height: 500px;
+        width: min(380px, 80vw);
+        height: 560px;
     }
 }
 
@@ -1210,6 +1267,23 @@ footer {
     .compact-projects,
     .project-stats {
         grid-template-columns: 1fr;
+    }
+
+    .single-line-title {
+        white-space: normal;
+    }
+
+    .title {
+        font-size: 1.45rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-wrapper {
+        width: min(330px, 86vw);
+        height: 500px;
     }
 
     .exp-header {

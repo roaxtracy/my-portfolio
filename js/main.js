@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('preferredLang', lang);
+        document.documentElement.lang = ({ zh: 'zh-CN', en: 'en', jp: 'ja' })[lang] || 'zh-CN';
         
         // Update all elements with data-i18n
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -38,11 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
             'help': t.terminal_help,
             'ls': 'about.txt  tech-stack.md  agileexam/  pomelife-hub/  honors.log  contact.info',
-            'whoami': t.about_info_desc,
-            'skills': t.skills_distribution,
-            'projects': 'AgileExam: 104 registered users, AI adaptive planning\nPomeLife Hub: 4-end commerce system, 114 API mappings, 39 tables',
-            'awards': t.award_cat_1 + ', ' + t.award_cat_2 + ', ' + t.award_cat_3,
-            'contact': 'Email: 2206099308@qq.com\nPhone: 18043040643\nPortfolio: https://roaxtracy.github.io/my-portfolio/',
+            'whoami': t.terminal_whoami,
+            'skills': t.terminal_skills,
+            'projects': t.terminal_projects,
+            'agileexam': t.terminal_agileexam,
+            'pomelife': t.terminal_pomelife,
+            'awards': t.terminal_awards,
+            'contact': t.terminal_contact,
+            'resume': t.terminal_resume,
             'date': new Date().toLocaleString(lang),
             'clear': 'CLEAR'
         };
@@ -259,7 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
         this.name = "${nameText}";
         this.role = "${translations[currentLang].title}";
         this.skills = ["Java", "Spring Boot", "Python", "Vue", "uni-app", "Docker"];
-        this.projects = ["AgileExam", "PomeLife Hub"];
+        this.projects = [
+            { name: "AgileExam", users: 104 },
+            { name: "PomeLife Hub", ends: 4 }
+        ];
+        this.target = "Software Development Engineer";
     }
 }`;
         
@@ -269,18 +277,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const terminalInput = document.getElementById('terminal-input');
         const terminalBody = document.getElementById('terminal-body');
 
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function highlightTerminalCode(text) {
+            return escapeHtml(text).replace(/("[^"]*"|\b(?:class|constructor|this|async|while|await)\b)/g, (match) => {
+                if (match.startsWith('"')) {
+                    return `<span class="terminal-string">${match}</span>`;
+                }
+                return `<span class="terminal-keyword">${match}</span>`;
+            });
+        }
+
         let j = 0;
         function typeTerminal() {
             if (j < terminalText.length) {
-                let content = terminalText.substring(0, ++j)
-                    .replace(/class|constructor|this|async|while|await/g, m => `<span style="color: #ff7b72;">${m}</span>`)
-                    .replace(/"[^"]*"/g, m => `<span style="color: #a5d6ff;">${m}</span>`);
+                const content = highlightTerminalCode(terminalText.substring(0, ++j));
                 terminalEl.innerHTML = content + '<span class="blink">_</span>';
                 setTimeout(typeTerminal, 20 + Math.random() * 20);
             } else {
                 const introOutput = document.createElement('div');
                 introOutput.className = 'terminal-output';
-                introOutput.innerHTML = terminalEl.innerHTML + `<br><br><span style="color: #27c93f;">${translations[currentLang].terminal_optimized}</span>`;
+                introOutput.innerHTML = terminalEl.innerHTML + `<br><br><span class="terminal-success">${translations[currentLang].terminal_optimized}</span>`;
                 terminalHistory.appendChild(introOutput);
                 terminalEl.innerHTML = '';
                 setTimeout(() => { terminalInputLine.classList.remove('hidden'); terminalInput.focus(); }, 500);
@@ -301,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (window.currentTerminalCommands[cmd]) {
                         if (window.currentTerminalCommands[cmd] === 'CLEAR') { terminalHistory.innerHTML = ''; }
                         else { res.innerText = window.currentTerminalCommands[cmd]; output.appendChild(res); }
-                    } else { res.innerText = `Command not found: ${cmd}`; output.appendChild(res); }
+                    } else { res.innerText = `${translations[currentLang].terminal_not_found}: ${cmd}`; output.appendChild(res); }
                     terminalHistory.appendChild(output);
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
