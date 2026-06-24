@@ -235,12 +235,13 @@
                         <div class="card-content">
                             <div class="project-kicker">AI Learning Product</div>
                             <h4 data-i18n="project_1_title">AgileExam 长周期备考自适应伴学系统</h4>
-                            <p class="tech-stack">Python Flask / SQLite / OpenAI SDK / Chart.js / D3.js / Docker / Nginx</p>
+                            <p class="tech-stack" data-i18n="project_1_stack">Python Flask / SQLite / DeepSeek API / 小米 MiMo API / Chart.js / D3.js / Docker / Nginx</p>
                             <p data-i18n="project_1_desc">面向考研、考公、考证等长期备考场景的 AI 伴学系统，已部署上线，目前注册用户 104 人。</p>
                             <ul class="project-points">
-                                <li data-i18n="project_1_point_1">设计“门控式进度追踪 + AI 动态重排”机制，基于实际打卡动态调整后续学习计划。</li>
-                                <li data-i18n="project_1_point_2">构建 80+ API 路由、15+ 数据表，覆盖认证、章节、学习记录、周报、徽章、知识库等模块。</li>
-                                <li data-i18n="project_1_point_3">接入 DeepSeek / 小米 MiMo 双提供商，支持 AI 笔记、练习题、主观题批改和周报画像。</li>
+                                <li data-i18n="project_1_point_1">设计“门控式进度追踪 + AI 动态重排”机制，将章节状态拆分为未开始、进行中、已完成，并在打卡后根据实际进度触发后续计划重排。</li>
+                                <li data-i18n="project_1_point_2">基于 Flask 构建后端服务，项目包含 80+ API 路由、15+ 数据表，完成用户认证、章节管理、学习记录、周报、徽章、知识库等模块。</li>
+                                <li data-i18n="project_1_point_3">接入兼容 OpenAI API 格式的大模型服务，支持 DeepSeek / 小米 MiMo 双提供商切换，实现 AI 分析报告、学习笔记、练习题、周报画像与主观题批改。</li>
+                                <li data-i18n="project_1_point_4">使用 Chart.js、D3.js 实现进度趋势、科目分布、热力图、知识图谱等可视化，并通过 Docker、Nginx 与生产 WSGI 服务完成部署。</li>
                             </ul>
                             <div class="project-stats">
                                 <span><strong>104</strong> <span data-i18n="stat_users">注册用户</span></span>
