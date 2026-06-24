@@ -602,6 +602,11 @@ h1, h2, h3, h4 {
     margin-top: 0.35rem;
 }
 
+.metric-card-agile .metric-label {
+    white-space: nowrap;
+    font-size: 0.82rem;
+}
+
 .btn {
     padding: 14px 32px;
     border-radius: 30px;
