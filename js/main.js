@@ -37,11 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const t = translations[lang];
         return {
             'help': t.terminal_help,
-            'ls': 'about.txt  skills.md  awards.log  projects/  contact.info',
+            'ls': 'about.txt  tech-stack.md  agileexam/  pomelife-hub/  honors.log  contact.info',
             'whoami': t.about_info_desc,
             'skills': t.skills_distribution,
-            'awards': t.award_cat_1 + ', ' + t.award_cat_2,
-            'contact': 'Email: roaxtracy@gmail.com\nQQ: 3213538450',
+            'projects': 'AgileExam: 104 registered users, AI adaptive planning\nPomeLife Hub: 4-end commerce system, 114 API mappings, 39 tables',
+            'awards': t.award_cat_1 + ', ' + t.award_cat_2 + ', ' + t.award_cat_3,
+            'contact': 'Email: 2206099308@qq.com\nPhone: 18043040643\nPortfolio: https://roaxtracy.github.io/my-portfolio/',
             'date': new Date().toLocaleString(lang),
             'clear': 'CLEAR'
         };
@@ -257,7 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
     constructor() {
         this.name = "${nameText}";
         this.role = "${translations[currentLang].title}";
-        this.skills = ["C++", "Java", "Python", "HarmonyOS"];
+        this.skills = ["Java", "Spring Boot", "Python", "Vue", "uni-app", "Docker"];
+        this.projects = ["AgileExam", "PomeLife Hub"];
     }
 }`;
         
